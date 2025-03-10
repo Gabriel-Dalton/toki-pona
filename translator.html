@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toki Pona Translator</title>
+</head>
+<body>
+    <h1>Toki Pona Translator</h1>
+    <label for="inputText">Enter English text:</label>
+    <input type="text" id="inputText" placeholder="e.g. hello friend please understand">
+    <button onclick="translateText()">Translate</button>
+    <p id="output"></p>
+
+    <script>
+        const tokiPonaDictionary = {
+            "hello": "toki",
+            "goodbye": "tawa",
+            "please": "o",
+            "thank you": "pona",
+            "yes": "a",
+            "no": "ala",
+            "friend": "jan pona",
+            "food": "moku",
+            "water": "telo",
+            "love": "olin",
+            "tool": "ilo",
+            "strange": "nasa",
+            "understand": "sona",
+            "happy": "pona",
+            "sad": "ike",
+            "big": "suli",
+            "small": "lili"
+        };
+
+        function translateToTokiPona(input) {
+            const words = input.toLowerCase().split(" ");
+            return words.map(word => tokiPonaDictionary[word] || word).join(" ");
+        }
+
+        function translateText() {
+            const inputText = document.getElementById("inputText").value;
+            const translation = translateToTokiPona(inputText);
+            document.getElementById("output").innerText = `Toki Pona: ${translation}`;
+        }
+    </script>
+</body>
+</html>
